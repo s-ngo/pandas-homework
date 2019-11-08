@@ -32,18 +32,21 @@ insurance = pd.read_csv(filepath_or_buffer='insurance.csv',
 # pretty_print("Max of Charges column", insurance['charges'].max())
 
 # 7. What is the age and sex of the person that paid 10797.3362. Was he/she a smoker?
-# pretty_print("Age and Sex of person who paid 10797.3362", insurance['charges'] == "10797.3362")
-# "Age and Sex of person who paid 10797.3362",
-# pretty_print(insurance['age', 'sex'].where(insurance['charges'] == 10797.3362)
-# pretty_print(insurance[insurance['charges'] == 10797.3362]['age'])
+# pretty_print("Age and Sex of person who paid 10797.3362", [insurance['charges'] == 10797.3362])
+# pretty_print("Age and Sex of person who paid 10797.3362", insurance[insurance['charges'] == 10797.3362][['age', 'sex', 'smoker']])
 
 # 8. What is the age of the person who paid the maximum charge?
-
+# pretty_print("Age of person who paid max charge", insurance[insurance['charges'] == insurance['charges'].max()][['age']])
 
 # 9. How many insured people do we have for each region?
+# pretty_print("How many insured people for each region?", insurance['region'].value_counts())
 
 # 10. How many insured people are children?
+# pretty_print("How many insured people are children?", insurance[insurance['age'] < 18])
 
 # 11. What do you expect to be the correlation between charges and age, bmi and children?
+# Age is correlated with charges since older we are, charges will increase
+# No real correlation between bmi and children
 
 # 12. Using the method corr(), check if your assumptions were correct.
+# pretty_print("Correlation between charges and age, bmi and children", insurance[['age', 'charges', 'bmi', 'children']].corr())
